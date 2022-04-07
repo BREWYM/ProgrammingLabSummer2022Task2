@@ -4,15 +4,17 @@ plugins {
 }
 
 group 'org.example'
-version '1.0-SNAPSHOT'
+version ''
 
 repositories {
     mavenCentral()
 }
 jar {
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+    archivesBaseName = 'grep'
     manifest {
         attributes 'Main-Class': 'GrepLauncher'
+        attributes 'Class-Path': 'D:\\Lab2022Task2\\src\\maim\\java\\Grep\\GrepLauncer.java'
     }
 
     from {
@@ -21,7 +23,7 @@ jar {
 }
 
 application {
-    mainClass = "Main"
+    mainClassName = "GrepLauncher"
 }
 
 dependencies {

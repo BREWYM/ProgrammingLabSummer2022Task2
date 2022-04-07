@@ -1,3 +1,7 @@
+package tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+import Grep.Grep;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

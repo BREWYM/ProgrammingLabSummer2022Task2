@@ -1,3 +1,5 @@
+package Grep;
+
 import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
@@ -7,13 +9,13 @@ import java.io.IOException;
 
 public class GrepLauncher {
     @Option(name = "-v", metaVar = "InversionV", required = false, usage = "Condition Inversion")
-    private final boolean inversion = false;
+    private boolean inversion = false;
 
     @Option(name = "-i", metaVar = "RegisterIngnoringI", required = false, usage = "Ignoring of words' register")
-    private final boolean ignoring = false;
+    private boolean ignoring = false;
 
     @Option(name = "-r", metaVar = "Regex", required = false, usage = "Comparing to regex")
-    private final boolean regex = false;
+    private boolean regex = false;
 
     @Argument(required = true, metaVar = "Word", usage = "A word to compare to")
     private String word;
