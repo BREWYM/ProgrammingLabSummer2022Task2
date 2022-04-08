@@ -13,7 +13,7 @@ jar {
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
     archivesBaseName = 'grep'
     manifest {
-        attributes 'Main-Class': 'GrepLauncher'
+        attributes 'Main-Class': 'Grep.GrepLauncher'
         attributes 'Class-Path': 'D:\\Lab2022Task2\\src\\maim\\java\\Grep\\GrepLauncer.java'
     }
 
