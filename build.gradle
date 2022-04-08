@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'application'
 }
 
 group 'org.example'
@@ -11,10 +10,8 @@ repositories {
 }
 jar {
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-    archivesBaseName = 'grep'
     manifest {
         attributes 'Main-Class': 'Grep.GrepLauncher'
-        attributes 'Class-Path': 'D:\\Lab2022Task2\\src\\maim\\java\\Grep\\GrepLauncer.java'
     }
 
     from {
@@ -22,9 +19,8 @@ jar {
     }
 }
 
-application {
-    mainClassName = "GrepLauncher"
-}
+
+
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
