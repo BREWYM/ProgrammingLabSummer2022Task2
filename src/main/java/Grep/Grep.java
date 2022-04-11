@@ -3,41 +3,35 @@ package Grep;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Grep {
+    private boolean ignoring;
 
-    public String neededCondition(boolean i, String s) {
-        return (i) ? s.toLowerCase() : s;
+    public String shapedLine(String s) {
+        return ignoring ? s.toLowerCase() : s;
     }
 
-    public List<String> grep(boolean inversion, boolean ignoring, boolean regex, String inputWord, String inputname)
+    public void grep(boolean inversion, boolean ignoring, boolean regex, String inputWord, String inputname, OutputType outputType)
             throws IOException {
-        String word = neededCondition(ignoring, inputWord);
-        List<String> list = new ArrayList<>();
+        this.ignoring = ignoring;
+        String word = shapedLine(inputWord);
         String line;
+
         try (BufferedReader br = new BufferedReader(new FileReader(inputname))) {
+            Pattern pattern = Pattern.compile(word);
             while ((line = br.readLine()) != null) {
 
                 if (regex) {
-                    Pattern pattern = Pattern.compile(word);
-                    Matcher matcher = pattern.matcher(neededCondition(ignoring, line));
-                    boolean find = matcher.find();
-                    if (find && !inversion) list.add(line);
-                    if (!find && inversion) list.add(line);
-
+                    Matcher matcher = pattern.matcher(shapedLine(line));
+                    if (matcher.find() != inversion) outputType.outputTo(line);
                 } else {
-                    if (neededCondition(ignoring, line).contains(word) && !inversion)
-                             list.add(line);
-                    if (!neededCondition(ignoring, line).contains(word) && inversion) list.add(line);
+                    if (shapedLine(line).contains(word) != inversion)
+                        outputType.outputTo(line);
                 }
             }
         }
-        list.forEach(System.out::println);
-        return list;
-    }
 
+    }
 }

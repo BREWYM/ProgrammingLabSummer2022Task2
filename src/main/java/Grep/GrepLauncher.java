@@ -36,7 +36,7 @@ public class GrepLauncher {
         }
         Grep grep = new Grep();
         try {
-            grep.grep(inversion, ignoring, regex, word, inputFileName);
+            grep.grep(inversion, ignoring, regex, word, inputFileName, new outputToConsole());
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
