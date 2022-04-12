@@ -6,7 +6,6 @@ import Grep.Grep;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import Grep.outputToList;
-import org.kohsuke.args4j.CmdLineException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -56,4 +55,9 @@ public class GrepTest {
                 grep.grep(false, false, false, "bobr", "sosker", new outputToList(list)));
     }
 
+    @Test
+    void mountain() throws IOException {
+        grep.grep(false, true, false, "FUDZI", "input/text.txt", new outputToList(list));
+        assertEquals(List.of("fudzi132dhd", "wfegOJOSg2123Fudzi", "N-wordFudzi"), list);
+    }
 }

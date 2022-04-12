@@ -23,12 +23,22 @@ public class Grep {
             Pattern pattern = Pattern.compile(word);
             while ((line = br.readLine()) != null) {
 
-                if (regex) {
-                    Matcher matcher = pattern.matcher(shapedLine(line));
-                    if (matcher.find() != inversion) outputType.outputTo(line);
+                if (inversion) { //Вынес инверсию, но так выглядит хуже, чем было
+                    if (regex) {
+                        Matcher matcher = pattern.matcher(shapedLine(line));
+                        if (!matcher.find()) outputType.outputTo(line);
+                    } else {
+                        if (!shapedLine(line).contains(word))
+                            outputType.outputTo(line);
+                    }
                 } else {
-                    if (shapedLine(line).contains(word) != inversion)
-                        outputType.outputTo(line);
+                    if (regex) {
+                        Matcher matcher = pattern.matcher(shapedLine(line));
+                        if (matcher.find()) outputType.outputTo(line);
+                    } else {
+                        if (shapedLine(line).contains(word))
+                            outputType.outputTo(line);
+                    }
                 }
             }
         }
