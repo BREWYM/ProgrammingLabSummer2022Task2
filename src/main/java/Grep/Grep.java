@@ -23,7 +23,7 @@ public class Grep {
             Pattern pattern = Pattern.compile(word);
             while ((line = br.readLine()) != null) {
 
-                if (inversion) { //Вынес инверсию, но так выглядит хуже, чем было
+                if (inversion) { //Вынес проверку inversion выше, чтобы проверялось один раз
                     if (regex) {
                         Matcher matcher = pattern.matcher(shapedLine(line));
                         if (!matcher.find()) outputType.outputTo(line);
@@ -42,6 +42,7 @@ public class Grep {
                 }
             }
         }
-
     }
 }
+
+
