@@ -1,7 +1,7 @@
-package Grep;
+package grep;
 
 
-public class outputToConsole implements OutputType {
+public class ConsoleOutput implements OutputType {
     //Реализация интерфейса для вывода на консоль
 
     @Override

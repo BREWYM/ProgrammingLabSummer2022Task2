@@ -1,4 +1,4 @@
-package Grep;
+package grep;
 
 import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.CmdLineException;
@@ -36,7 +36,7 @@ public class GrepLauncher {
         }
         Grep grep = new Grep();
         try {
-            grep.grep(inversion, ignoring, regex, word, inputFileName, new outputToConsole());
+            grep.grep(inversion, ignoring, regex, word, inputFileName, new ConsoleOutput());
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }

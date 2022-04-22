@@ -1,4 +1,4 @@
-package Grep;
+package grep;
 
 
 public interface OutputType {

@@ -1,9 +1,9 @@
-package Grep;
+package grep;
 
 import java.util.List;
 
 //Реализация интерфейса для наполнения листа
-public class outputToList implements OutputType {
+public class ListOutput implements OutputType {
     private final List<String> list;
 
     @Override
@@ -11,7 +11,7 @@ public class outputToList implements OutputType {
         list.add(s);
     }
 
-    public outputToList(List<String> list) {
+    public ListOutput(List<String> list) {
         this.list = list;
 
     }
