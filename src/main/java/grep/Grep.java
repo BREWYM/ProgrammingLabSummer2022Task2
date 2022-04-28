@@ -20,12 +20,15 @@ public class Grep {
         String line;
         Pattern pattern = null;
 
+        if (word == null) throw new NullPointerException();
+
         try (BufferedReader br = new BufferedReader(new FileReader(inputname))) {
 
-            if (regex)
+            if (regex) {
                 pattern = Pattern.compile(word);
-            //Не понял замечание про pattern/compile/matcher. Судя по всему, они не могут вернуть ноль
-
+                //Не понял замечание про pattern/compile/matcher. Судя по всему, они не могут вернуть ноль
+                if (pattern == null) throw new NullPointerException(); //Но проверку добавил
+            }
             while ((line = br.readLine()) != null) {
                 if (regex) {
                     Matcher matcher = pattern.matcher(shapedLine(line));

@@ -14,12 +14,13 @@ import java.util.List;
 
 public class GrepTest {
     private static final Grep grep = new Grep();
+
+    //Этот лист мы передадим интерфейсу для дальнейшей записи в него
     private static final List<String> list = new ArrayList<>();
     private static final OutputType output = new ListOutput(list); //Вынес интерфейс в поле
-    //Создаем лист, который мы перезаписываем при помощи grep и потом сравниваем
+    //Создаем лист, который мы перезаписываем при помощи grep и реализации интерфейса ListOutput и потом сравниваем
 
 
-    //Я попробовал убрать очистку и сделать лист полем у outputType
     @AfterEach
     void cleanUp(){
         list.clear();
@@ -63,5 +64,12 @@ public class GrepTest {
     void mountain() throws IOException {
         grep.grep(false, true, false, "FUDZI", "input/text.txt", output);
         assertEquals(List.of("fudzi132dhd", "wfegOJOSg2123Fudzi", "N-wordFudzi"), list);
+    }
+
+    @Test
+    void NPE() {
+        assertThrows(NullPointerException.class, () -> grep.grep(false,
+                true, false, null, "input/text.txt", output));
+
     }
 }
